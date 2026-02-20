@@ -163,7 +163,10 @@ export const ProductCreateForm = ({
         collection_id: payload.collection_id || undefined,
         shipping_profile_id: undefined,
         enable_variants: undefined,
-        additional_data: undefined,
+        brand_id: undefined,
+        additional_data: payload.brand_id
+          ? { brand_id: payload.brand_id }
+          : undefined,
         categories: payload.categories.map((cat) => ({
           id: cat,
         })),

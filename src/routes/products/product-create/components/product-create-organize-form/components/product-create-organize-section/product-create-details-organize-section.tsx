@@ -61,6 +61,20 @@ export const ProductCreateOrganizationSection = ({
       })),
   })
 
+  const brands = useComboboxData({
+    queryKey: ["brands", "creating"],
+    queryFn: (params) =>
+      fetchQuery("/vendor/brands", {
+        method: "GET",
+        query: params,
+      }),
+    getOptions: (data) =>
+      data.brands.map((brand: any) => ({
+        label: brand.name,
+        value: brand.id,
+      })),
+  })
+
   return (
     <div id="organize" className="flex flex-col gap-y-8">
       <Heading>{t("products.organization.header")}</Heading>
@@ -156,6 +170,30 @@ export const ProductCreateOrganizationSection = ({
                     searchValue={tags.searchValue}
                     onSearchValueChange={tags.onSearchValueChange}
                     fetchNextPage={tags.fetchNextPage}
+                  />
+                </Form.Control>
+                <Form.ErrorMessage />
+              </Form.Item>
+            )
+          }}
+        />
+      </div>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <Form.Field
+          control={form.control}
+          name="brand_id"
+          render={({ field }) => {
+            return (
+              <Form.Item>
+                <Form.Label optional>{t("brands.domain")}</Form.Label>
+                <Form.Control>
+                  <Combobox
+                    {...field}
+                    options={brands.options}
+                    searchValue={brands.searchValue}
+                    onSearchValueChange={brands.onSearchValueChange}
+                    fetchNextPage={brands.fetchNextPage}
+                    allowClear
                   />
                 </Form.Control>
                 <Form.ErrorMessage />

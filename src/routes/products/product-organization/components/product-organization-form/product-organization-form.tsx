@@ -26,6 +26,7 @@ const ProductOrganizationSchema = zod.object({
   category_ids: zod.string().nullable(),
   // category_ids: zod.array(zod.string()),
   tag_ids: zod.array(zod.string()),
+  brand_id: zod.string().optional().nullable(),
 })
 
 export const ProductOrganizationForm = ({
@@ -94,12 +95,27 @@ export const ProductOrganizationForm = ({
       })),
   })
 
+  const brands = useComboboxData({
+    queryKey: ["brands"],
+    queryFn: (params) =>
+      fetchQuery("/vendor/brands", {
+        method: "GET",
+        query: params as { [key: string]: string | number },
+      }),
+    getOptions: (data) =>
+      data.brands.map((brand: any) => ({
+        label: brand.name,
+        value: brand.id,
+      })),
+  })
+
   const form = useExtendableForm({
     defaultValues: {
       type_id: product.type_id ?? "",
       collection_id: product.collection_id ?? "",
       category_ids: product.categories?.[0]?.id || "",
       tag_ids: product.tags?.map((t) => t.id) || [],
+      brand_id: product.brand?.id ?? "",
     },
     schema: ProductOrganizationSchema,
     configs: configs,
@@ -115,6 +131,7 @@ export const ProductOrganizationForm = ({
         collection_id: data.collection_id ? data.collection_id : undefined,
         categories: data.category_ids ? [{ id: data.category_ids }] : [],
         tags: data.tag_ids?.map((t) => ({ id: t })) ?? [],
+        additional_data: { brand_id: data.brand_id || null },
       },
       {
         onSuccess: ({ product }) => {
@@ -223,6 +240,28 @@ export const ProductOrganizationForm = ({
                         options={tags.options}
                         onSearchValueChange={tags.onSearchValueChange}
                         searchValue={tags.searchValue}
+                      />
+                    </Form.Control>
+                    <Form.ErrorMessage />
+                  </Form.Item>
+                )
+              }}
+            />
+            <Form.Field
+              control={form.control}
+              name="brand_id"
+              render={({ field }) => {
+                return (
+                  <Form.Item>
+                    <Form.Label optional>{t("brands.domain")}</Form.Label>
+                    <Form.Control>
+                      <Combobox
+                        {...field}
+                        options={brands.options}
+                        searchValue={brands.searchValue}
+                        onSearchValueChange={brands.onSearchValueChange}
+                        fetchNextPage={brands.fetchNextPage}
+                        allowClear
                       />
                     </Form.Control>
                     <Form.ErrorMessage />

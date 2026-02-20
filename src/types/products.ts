@@ -1,4 +1,5 @@
 import { HttpTypes } from "@medusajs/types"
+import { Brand } from "../hooks/api/brands"
 
 export type ExtendedAdminProduct = Omit<HttpTypes.AdminProduct, "variants"> & {
   thumbnail: string
@@ -6,6 +7,7 @@ export type ExtendedAdminProduct = Omit<HttpTypes.AdminProduct, "variants"> & {
   attribute_values?: ExtendedAdminProductAttributeValues[]
   variants?: ExtendedAdminProductVariant[]
   shipping_profile: HttpTypes.AdminShippingProfile
+  brand?: Brand | null
 }
 
 export type ExtendedAdminProductAttributValuesAttribute = {

@@ -89,6 +89,18 @@ export const ProductOrganizationSection = ({
         }
       />
 
+      <SectionRow
+        title={t("brands.fields.brand")}
+        value={
+          (product as any).brand ? (
+            <OrganizationTag
+              label={(product as any).brand.name}
+              to={`/brands/${(product as any).brand.id}`}
+            />
+          ) : undefined
+        }
+      />
+
       {getDisplays("product", "organize").map((Component, i) => {
         return <Component key={i} data={product} />
       })}

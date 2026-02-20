@@ -439,7 +439,12 @@ export const useUpdateProduct = (
   options?: UseMutationOptions<
     HttpTypes.AdminProductResponse,
     FetchError,
-    HttpTypes.AdminUpdateProduct & { additional_data?: { values: Record<string, string>[] } }
+    HttpTypes.AdminUpdateProduct & {
+      additional_data?: {
+        values?: Record<string, string>[]
+        brand_id?: string | null
+      }
+    }
   >
 ) => {
   return useMutation({

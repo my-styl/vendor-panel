@@ -2105,6 +2105,30 @@
       }
     }
   },
+  "brands": {
+    "domain": "Brands",
+    "create": {
+      "title": "Create Brand",
+      "header": "Create Brand",
+      "subtitle": "Create a new brand for your products.",
+      "descriptionPlaceholder": "A short description of your brand.",
+      "successToast": "Brand {{name}} was successfully created."
+    },
+    "edit": {
+      "header": "Edit Brand",
+      "subtitle": "Update your brand information.",
+      "successToast": "Brand {{name}} was successfully updated."
+    },
+    "delete": {
+      "confirmation": "You are about to delete the brand {{name}}. This will remove it from all linked products. This action cannot be undone.",
+      "successToast": "Brand {{name}} was successfully deleted."
+    },
+    "fields": {
+      "brand": "Brand",
+      "handle": "Handle",
+      "logo": "Logo URL"
+    }
+  },
   "campaigns": {
     "domain": "Campaigns",
     "details": "Campaign details",
