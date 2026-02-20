@@ -1,3 +1,4 @@
+export * from "./use-brand-table-columns"
 export * from "./use-campaign-table-columns"
 export * from "./use-collection-table-columns"
 export * from "./use-customer-group-table-columns"

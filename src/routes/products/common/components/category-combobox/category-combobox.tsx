@@ -257,7 +257,7 @@ export const CategoryCombobox = forwardRef<
             "has-[:disabled]:bg-ui-bg-disabled has-[:disabled]:text-ui-fg-disabled has-[:disabled]:cursor-not-allowed",
             {
               // Fake the focus state as long as the popover is open,
-              // this prevents the styling from flickering when navigating
+              // this prevents the Fleekg from flickering when navigating
               // between levels.
               "shadow-borders-interactive-with-active": open,
             },

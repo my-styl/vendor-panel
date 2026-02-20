@@ -1,5 +1,6 @@
 export * from "./api-keys"
 export * from "./auth"
+export * from "./brands"
 export * from "./campaigns"
 export * from "./categories"
 export * from "./collections"

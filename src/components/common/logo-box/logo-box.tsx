@@ -1,12 +1,12 @@
-import { clx } from "@medusajs/ui"
-import { Transition, motion } from "motion/react"
+import { clx } from '@medusajs/ui';
+import { motion, Transition } from 'motion/react';
 
 type LogoBoxProps = {
-  className?: string
-  checked?: boolean
-  containerTransition?: Transition
-  pathTransition?: Transition
-}
+  className?: string;
+  checked?: boolean;
+  containerTransition?: Transition;
+  pathTransition?: Transition;
+};
 
 export const LogoBox = ({
   className,
@@ -14,25 +14,25 @@ export const LogoBox = ({
   containerTransition = {
     duration: 0.8,
     delay: 0.5,
-    ease: [0, 0.71, 0.2, 1.01],
+    ease: [0, 0.71, 0.2, 1.01]
   },
   pathTransition = {
     duration: 0.8,
     delay: 0.6,
-    ease: [0.1, 0.8, 0.2, 1.01],
-  },
+    ease: [0.1, 0.8, 0.2, 1.01]
+  }
 }: LogoBoxProps) => {
   return (
     <div
       className={clx(
-        "size-14 bg-ui-button-neutral shadow-buttons-neutral relative flex items-center justify-center rounded-xl",
+        'relative flex size-14 items-center justify-center rounded-xl bg-ui-button-neutral shadow-buttons-neutral',
         "after:button-neutral-gradient after:inset-0 after:content-['']",
         className
       )}
     >
       {checked && (
         <motion.div
-          className="size-5 absolute -right-[5px] -top-1 flex items-center justify-center rounded-full border-[0.5px] border-[rgba(3,7,18,0.2)] bg-[#3B82F6] bg-gradient-to-b from-white/0 to-white/20 shadow-[0px_1px_2px_0px_rgba(3,7,18,0.12),0px_1px_2px_0px_rgba(255,255,255,0.10)_inset,0px_-1px_5px_0px_rgba(255,255,255,0.10)_inset,0px_0px_0px_0px_rgba(3,7,18,0.06)_inset]"
+          className="absolute -right-[5px] -top-1 flex size-5 items-center justify-center rounded-full border-[0.5px] border-[rgba(3,7,18,0.2)] bg-[#3B82F6] bg-gradient-to-b from-white/0 to-white/20 shadow-[0px_1px_2px_0px_rgba(3,7,18,0.12),0px_1px_2px_0px_rgba(255,255,255,0.10)_inset,0px_-1px_5px_0px_rgba(255,255,255,0.10)_inset,0px_0px_0px_0px_rgba(3,7,18,0.06)_inset]"
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={containerTransition}
@@ -60,15 +60,19 @@ export const LogoBox = ({
       <svg
         width="36"
         height="38"
-        viewBox="0 0 36 38"
+        viewBox="0 0 664 626"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M30.85 6.16832L22.2453 1.21782C19.4299 -0.405941 15.9801 -0.405941 13.1648 1.21782L4.52043 6.16832C1.74473 7.79208 0 10.802 0 14.0099V23.9505C0 27.198 1.74473 30.1683 4.52043 31.7921L13.1251 36.7822C15.9405 38.4059 19.3903 38.4059 22.2056 36.7822L30.8103 31.7921C33.6257 30.1683 35.3307 27.198 35.3307 23.9505V14.0099C35.41 10.802 33.6653 7.79208 30.85 6.16832ZM17.6852 27.8317C12.8079 27.8317 8.8426 23.8713 8.8426 19C8.8426 14.1287 12.8079 10.1683 17.6852 10.1683C22.5625 10.1683 26.5674 14.1287 26.5674 19C26.5674 23.8713 22.6022 27.8317 17.6852 27.8317Z"
-          className="fill-ui-button-inverted relative drop-shadow-sm"
+          d="M601.459 96.4405L642.31 85.3128L644.086 92.7313L642.31 98.2951L640.534 103.859L636.981 111.278L631.653 118.696L626.325 124.26L620.997 129.824L615.668 135.388L612.116 139.097L608.564 142.806L606.788 146.515V150.225L608.564 152.079L610.34 153.934H613.892H619.22L622.773 150.225L629.877 142.806L636.981 135.388L645.862 124.26L652.966 114.987L658.295 103.859L661.847 94.5859L663.623 83.4581V74.185L661.847 64.9119L660.071 57.4934L644.086 12.9824L642.31 9.27313L640.534 5.56388L636.981 1.85463L633.429 0L576.594 16.6916L573.042 18.5463L571.266 22.2555V25.9648L587.251 87.1674L589.027 90.8766L590.803 92.7313L592.579 94.5859L597.907 96.4405H601.459Z"
+          className="relative fill-ui-button-inverted drop-shadow-sm"
+        />
+        <path
+          d="M489.167 625.998H63.281C25.654 625.998 -25.0576 603.062 46.9994 544.082L169.824 437.591L6.05789 150.885C-4.85984 120.849 -8.68101 62.4157 63.376 68.969L484.02 68.9691C511.385 68.9688 556.401 75.5642 530.199 121.437L390.901 265.574L538.297 544.082C554.676 571.388 567.78 625.998 489.167 625.998Z"
+          className="relative fill-ui-button-inverted drop-shadow-sm"
         />
       </svg>
     </div>
-  )
-}
+  );
+};

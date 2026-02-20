@@ -1,3 +1,4 @@
+export * from "./use-brand-table-query"
 export * from "./use-campaign-table-query"
 export * from "./use-collection-table-query"
 export * from "./use-customer-group-table-query"

@@ -4,32 +4,43 @@
 
 @layer base {
   @font-face {
-    font-family: "Inter";
+    font-family: 'Inter';
     font-weight: 400;
-    src: url("./assets/fonts/Inter-Regular.ttf") format("truetype");
+    src: url('./assets/fonts/Inter-Regular.ttf') format('truetype');
   }
 
   @font-face {
-    font-family: "Inter";
+    font-family: 'Inter';
     font-weight: 500;
-    src: url("./assets/fonts/Inter-Medium.ttf") format("truetype");
+    src: url('./assets/fonts/Inter-Medium.ttf') format('truetype');
   }
 
   @font-face {
-    font-family: "Roboto Mono";
+    font-family: 'Roboto Mono';
     font-weight: 400;
-    src: url("./assets/fonts/RobotoMono-Regular.ttf") format("truetype");
+    src: url('./assets/fonts/RobotoMono-Regular.ttf') format('truetype');
   }
 
   @font-face {
-    font-family: "Roboto Mono";
+    font-family: 'Roboto Mono';
     font-weight: 500;
-    src: url("./assets/fonts/RobotoMono-Medium.ttf") format("truetype");
+    src: url('./assets/fonts/RobotoMono-Medium.ttf') format('truetype');
   }
 
   :root {
     @apply bg-ui-bg-subtle text-ui-fg-base antialiased;
     text-rendering: optimizeLegibility;
+
+    /* Primary Button - Wine Red Theme Override */
+    /* Fill: #710028, Inner Shadow: #DF61A2, Drop Shadow: #710028 */
+    --button-inverted: #870035;
+    --button-inverted-hover: #8a0032;
+    --button-inverted-pressed: #5a0020;
+
+    /* Button shadow/border override - changes black border to wine red */
+    --buttons-inverted:
+      0px 0.75px 0px 0px rgba(255, 255, 255, 0.2) inset, 0px 1px 2px 0px rgba(113, 0, 40, 0.4),
+      0px 0px 0px 1px rgba(113, 0, 40, 1);
   }
 }
 
@@ -45,6 +56,19 @@
   background-image: radial-gradient(black 1px, transparent 0);
   background-size: 40px 40px;
   background: repeat;
+}
+
+/* Dark mode button color overrides */
+.dark {
+  --button-inverted: #710028;
+  --button-inverted-hover: #8a0032;
+  --button-inverted-pressed: #5a0020;
+
+  /* Button shadow/border override - wine red border */
+  --buttons-inverted:
+    0px -1px 0px 0px rgba(255, 255, 255, 0.12), 0px 0px 0px 1px rgba(255, 255, 255, 0.1),
+    0px 0px 0px 1px rgba(113, 0, 40, 1), 0px 0px 1px 1.5px rgba(113, 0, 40, 0.24),
+    0px 2px 2px 0px rgba(113, 0, 40, 0.24);
 }
 
 .dark .rdp-selected {

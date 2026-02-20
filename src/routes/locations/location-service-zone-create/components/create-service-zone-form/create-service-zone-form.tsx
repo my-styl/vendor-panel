@@ -108,7 +108,7 @@ export function CreateServiceZoneForm({
                         <Form.Item>
                           <Form.Label>{t("fields.name")}</Form.Label>
                           <Form.Control>
-                            <Input {...field} />
+                            <Input {...field} placeholder="e.g., Dhaka Metro, Nationwide, Chittagong" />
                           </Form.Control>
                           <Form.ErrorMessage />
                         </Form.Item>
