@@ -13,6 +13,7 @@ import { RouteExtensions } from "./route-extensions"
 import { SettingsExtensions } from "./settings-extensions"
 import { ExtendedAdminOrderResponse } from "../../types/order"
 import { ExtendedAdminProductResponse } from "../../types/products"
+import { BrandResponse } from "../../hooks/api/brands"
 
 export const RouteMap: RouteObject[] = [
   {
@@ -573,6 +574,47 @@ export const RouteMap: RouteObject[] = [
                     path: ":ruleType/edit",
                     lazy: () =>
                       import("../../routes/promotions/common/edit-rules"),
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            path: "/brands",
+            errorElement: <ErrorBoundary />,
+            handle: {
+              breadcrumb: () => t("brands.domain"),
+            },
+            children: [
+              {
+                path: "",
+                lazy: () => import("../../routes/brands/brand-list"),
+                children: [
+                  {
+                    path: "create",
+                    lazy: () => import("../../routes/brands/brand-create"),
+                  },
+                ],
+              },
+              {
+                path: ":id",
+                lazy: async () => {
+                  const { Component, Breadcrumb, loader } = await import(
+                    "../../routes/brands/brand-detail"
+                  )
+
+                  return {
+                    Component,
+                    loader,
+                    handle: {
+                      breadcrumb: (match: UIMatch<BrandResponse>) => <Breadcrumb {...match} />,
+                    },
+                  }
+                },
+                children: [
+                  {
+                    path: "edit",
+                    lazy: () => import("../../routes/brands/brand-edit"),
                   },
                 ],
               },
